@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 
 import Item from "./Item/Item";
+import Cart from "./Cart/Cart";
 
 import { Drawer, LinearProgress, Grid, Badge } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
@@ -42,11 +43,13 @@ const App = () => {
 
   return (
     <Wrapper>
-      <Drawer
-        anchor="right"
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
-      ></Drawer>
+      <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
+        <Cart
+          cartItems={cartItems}
+          addToCart={handleAddToCart}
+          removeFromCart={handleRemoveFromCart}
+        />
+      </Drawer>
 
       <StyledButton
         onClick={() => {
